@@ -14,7 +14,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		int m = sc.nextInt();
-		BigDecimal sum = BigDecimal.ZERO;
+		long sum = 0;
 		List<Entry<Integer, Integer>> list = new ArrayList<>();
 		for(int i =0; i < n; i++)
 			list.add(new SimpleEntry<Integer,Integer>(sc.nextInt(), sc.nextInt()));
@@ -27,20 +27,16 @@ public class Main {
 			if(m == 0)
 				break;
 			
-			BigDecimal a = BigDecimal.valueOf(entry.getKey());
-			BigDecimal b = BigDecimal.valueOf(entry.getValue());
-
 			if(m > entry.getValue()) {
 				m-= entry.getValue();
-				sum = sum.add(a.multiply(b));
+				sum += (long)entry.getKey() * (long)entry.getValue();
 			}else if(m <= entry.getValue()) {
-				b = BigDecimal.valueOf(m);
-				sum = sum.add(a.multiply(b));
+				sum +=(long)entry.getKey() * (long)m;
 				
 				m = 0;
 			}
 		}
 		
-		System.out.println(sum.toString());
+		System.out.println(sum);
 	}
 }
