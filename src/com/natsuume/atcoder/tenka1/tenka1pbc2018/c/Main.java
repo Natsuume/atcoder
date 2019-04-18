@@ -1,12 +1,48 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.tenka1.tenka1pbc2018.c;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.stream.Collectors;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner();
+		int n = sc.nextInt();
+		long[] a = sc.nextLongArray(n);
+		Arrays.sort(a);
+		Deque<Long> aDeque = new ArrayDeque<>();
+		for(long i : a)
+			aDeque.add(i);
+		long sum = calc(new ArrayDeque<>(aDeque));
+		aDeque = new ArrayDeque<>(aDeque.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList()));
+		System.out.println(Math.max(sum, calc(aDeque)));
+	}
+	
+	private static long calc(Deque<Long> aDeque) {
+		Deque<Long> deque = new ArrayDeque<>();
+		deque.add(aDeque.pollFirst());
+		while(!aDeque.isEmpty()) {
+			deque.addLast(aDeque.pollLast());
+			if(!aDeque.isEmpty())
+				deque.addFirst(aDeque.pollLast());
+			if(!aDeque.isEmpty())
+				deque.addLast(aDeque.pollFirst());
+			if(!aDeque.isEmpty())
+				deque.addFirst(aDeque.pollFirst());
+		}
+		long start = deque.poll();
+		long sum = 0;
+		while(!deque.isEmpty()) {
+			long i = deque.poll();
+			sum += Math.abs(start - i);
+			start = i;
+		}
+		return sum;
 	}
 }
 

@@ -1,4 +1,4 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.tenka1.tenka1pbc2018.a;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,15 +7,33 @@ import java.io.InputStreamReader;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner();
+		String s = sc.next();
+		if(s.length() == 2)
+			System.out.println(s);
+		else {
+			for(int i = 2; i > -1; i--)
+				System.out.print(s.charAt(i));
+			System.out.println();
+		}
 	}
 }
 
 class Scanner {
+	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	private static final int SPACE = (int)' ';
 	private static final int LINE_END_0 = 13;
 	private static final int LINE_END_1 = 10;
 	private static final int BEFORE = -1;
-	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+	public boolean ready() {
+		try {
+			return br.ready();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 	public String next(){
 		StringBuilder sb = new StringBuilder();
@@ -45,53 +63,15 @@ class Scanner {
 		return sb.toString();
 	}
 	
-	public String[] nextArray(int length) {
-		String[] array = new String[length];
-		for(int i = 0; i < length; i++)
-			array[i] = next();
-		return array;
+	public int nextInt() {
+		return Integer.parseInt(next());
 	}
 	
 	public double nextDouble() {
 		return Double.parseDouble(next());
 	}
 	
-	public double[] nextDoubleArray(int length) {
-		double[] array = new double[length];
-		for(int i = 0; i < length; i++)
-			array[i] = nextDouble();
-		return array;
-	}
-	
-	public int nextInt() {
-		return Integer.parseInt(next());
-	}
-	
-	public int[] nextIntArray(int length) {
-		int[] array = new int[length];
-		for(int i = 0; i < length; i++)
-			array[i] = nextInt();
-		return array;
-	}
-	
 	public long nextLong() {
 		return Long.parseLong(next());
-	}
-	
-	public long[] nextLongArray(int length) {
-		long[] array = new long[length];
-		for(int i = 0; i < length; i++)
-			array[i] = nextLong();
-		return array;
-	}
-	
-	public boolean ready() {
-		try {
-			return br.ready();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
 	}
 }
