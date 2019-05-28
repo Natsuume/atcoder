@@ -1,4 +1,4 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc127.a;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,8 +6,14 @@ import java.io.InputStreamReader;
 
 public class Main {
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner();
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		if(a <= 5)
+			b = 0;
+		else if(6 <= a && a <= 12)
+			b /= 2;
+		System.out.println(b);
 	}
 }
 
@@ -54,6 +60,7 @@ class Scanner {
 	}
 	
 	public double nextDouble() {
+
 		return Double.parseDouble(next());
 	}
 	
@@ -65,6 +72,7 @@ class Scanner {
 	}
 	
 	public int nextInt() {
+
 		return Integer.parseInt(next());
 	}
 	
@@ -76,6 +84,7 @@ class Scanner {
 	}
 	
 	public long nextLong() {
+
 		return Long.parseLong(next());
 	}
 	

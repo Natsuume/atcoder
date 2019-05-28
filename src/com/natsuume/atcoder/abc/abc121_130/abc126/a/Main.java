@@ -1,4 +1,4 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc126.a;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,8 +6,17 @@ import java.io.InputStreamReader;
 
 public class Main {
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner();
+		int n = sc.nextInt();
+		int k = sc.nextInt();
+		String s = sc.next();
+		for(int i = 0; i < n; i++) {
+			char c = s.charAt(i);
+			if(i == k -1)
+				c = Character.toLowerCase(c);
+			System.out.print(c);
+		}
+		System.out.println();
 	}
 }
 

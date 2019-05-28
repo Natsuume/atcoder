@@ -1,4 +1,4 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc126.b;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,8 +6,22 @@ import java.io.InputStreamReader;
 
 public class Main {
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner();
+		String s = sc.next();
+		int forward = Integer.parseInt(s.substring(0, 2));
+		int backward = Integer.parseInt(s.substring(2, 4));
+		if(isMonth(forward) && !isMonth(backward))
+			System.out.println("MMYY");
+		else if(!isMonth(forward) && isMonth(backward))
+			System.out.println("YYMM");
+		else if(isMonth(forward) && isMonth(backward))
+			System.out.println("AMBIGUOUS");
+		else if(!isMonth(forward) && !isMonth(backward))
+			System.out.println("NA");
+	}
+	
+	static boolean isMonth(int i) {
+		return 0 < i && i < 13;
 	}
 }
 

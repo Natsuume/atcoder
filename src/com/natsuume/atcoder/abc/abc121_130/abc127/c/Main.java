@@ -1,4 +1,4 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc127.c;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,8 +6,26 @@ import java.io.InputStreamReader;
 
 public class Main {
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner();
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int[][] table = new int[2][m];
+		int beginMax = 0;
+		int endMin = Integer.MAX_VALUE;
+		for(int i = 0; i < m; i++){
+			int begin = sc.nextInt();
+			int end = sc.nextInt();
+			if(beginMax < begin)
+				beginMax = begin;
+			if(end < endMin)
+				endMin = end;
+		}
+		if(beginMax > endMin)
+			System.out.println(0);
+		else
+			System.out.println(endMin - beginMax+1);
+
+
 	}
 }
 

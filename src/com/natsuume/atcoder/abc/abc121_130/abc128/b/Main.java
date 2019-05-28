@@ -1,13 +1,42 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc128.b;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.*;
+import java.util.Map.*;
 
 public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner();
+		int n = sc.nextInt();
+		List<Map.Entry<String, Integer>> list = new ArrayList<>();
+		List<Entry<String, Integer>> l2 = new ArrayList<>();
+		for(int i = 0;i < n; i++){
+			String s = sc.next();
+			int p = sc.nextInt();
+			Entry<String, Integer> entry = new AbstractMap.SimpleEntry<>(s,p);
+			l2.add(entry);
+			list.add(entry);
+		}
+		Comparator<Entry<String, Integer>> comparator = new Comparator<Entry<String, Integer>>() {
+			@Override
+			public int compare(Map.Entry<String, Integer> stringIntegerEntry, Map.Entry<String, Integer> t1) {
+				String s1 = stringIntegerEntry.getKey();
+				String s2 = t1.getKey();
+				if(s1.compareTo(s2) !=0)
+					return s1.compareTo(s2);
+
+				return -(stringIntegerEntry.getValue() - t1.getValue());
+			}
+		};
+
+		Collections.sort(list, comparator);
+
+		for(Entry<String, Integer> entry : list){
+			System.out.println(l2.indexOf(entry) + 1);
+		}
 	}
 }
 

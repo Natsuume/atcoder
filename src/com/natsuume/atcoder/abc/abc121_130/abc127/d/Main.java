@@ -1,14 +1,28 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc127.d;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner();
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+
 	}
+
+
+
+	private static void increaseMap(Map<Integer, Integer> map, int key){
+		if(map.containsKey(key))
+			map.put(key, map.get(key) + 1);
+		else
+			map.put(key, 1);
+	}
+
 }
 
 class Scanner {

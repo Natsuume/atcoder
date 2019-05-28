@@ -1,14 +1,55 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc128.d;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner();
+		int n = sc.nextInt();
+		int k = sc.nextInt();
+		int[] v = sc.nextIntArray(n);
+		int max = 0;
+
+		for(int getNumber = 0; getNumber <= Math.min(n, k); getNumber++){
+			for(int left = 0; left <= getNumber; left++){
+				List<Integer> plusList = new ArrayList<>();
+				List<Integer> minusList = new ArrayList<>();
+
+				for(int i = 0;i < left; i++){
+					int num = v[i];
+					if(num >= 0)
+						plusList.add(num);
+					else
+						minusList.add(num);
+				}
+				for(int i = 0; i < getNumber - left; i++){
+					int num = v[n-1 - i];
+					if(num >= 0)
+						plusList.add(num);
+					else
+						minusList.add(num);
+				}
+
+				Collections.sort(minusList);
+
+				for(int i = 0; i < k - getNumber; i++){
+					if(minusList.isEmpty())
+						break;
+					minusList.remove(0);
+				}
+				int sum = plusList.stream().mapToInt(Integer::intValue).sum() + minusList.stream().mapToInt(Integer::intValue).sum();
+				if(max < sum)
+					max = sum;
+			}
+		}
+		System.out.println(max);
 	}
+
 }
 
 class Scanner {

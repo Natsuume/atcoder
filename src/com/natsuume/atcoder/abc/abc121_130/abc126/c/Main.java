@@ -1,13 +1,37 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc126.c;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner();
+		int n = sc.nextInt();
+		int k = sc.nextInt();
+		List<Integer> list = new ArrayList<>();
+		list.add(n);
+		for(double d = k; 1 <= d; d/=2) 
+			list.add((int)d);
+		list.add(0);
+		Collections.reverse(list);
+		System.out.println(list);
+		double sum = 0;
+		for(int i = 1; i < list.size(); i++) {
+			if(list.get(i-1) > n)
+				break;
+			
+			double base = (Math.min(n, list.get(i)) - list.get(i-1)) / (double)n;
+			double d = base * Math.pow(0.5, list.size() - i -1);
+			sum += d;
+			System.out.println();
+			System.out.println("i = " + i + ", list.get(i) = " + list.get(i));
+			System.out.println("base = " + base + ", d = " + d +" , pow(0.5, " + (list.size()-i -1) + ")");
+		}
+		System.out.println(sum);
 	}
 }
 

@@ -1,13 +1,52 @@
-package com.natsuume.atcoder.templatete;
+package com.natsuume.atcoder.abc.abc121_130.abc128.c;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner();
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		List<List<Integer>> table = new ArrayList<>();
+		for(int i = 0; i < m; i++){
+			int k = sc.nextInt();
+			List<Integer> l = new ArrayList<>(k);
+			for(int j = 0;j < k; j++)
+				l.add(sc.nextInt());
+			table.add(l);
+		}
+		int[] p = sc.nextIntArray(m);
+
+		int count = 0;
+
+		for(int i = 0; i < Math.pow(2,n); i++){
+//			System.out.println("i=" +i);
+			String s = Integer.toBinaryString(i);
+			int zero = n - s.length();
+			for(int z =0;z < zero; z++)
+				s = "0" + s;
+			boolean isOk = true;
+			for(int j = 0;j < m; j++){
+				List<Integer> l = table.get(j);
+				int pj = p[j];
+				final String str = s;
+				int sum = (int)l.stream().filter(num -> str.charAt(num-1) == '1').count();
+//				System.out.println("l="+l);
+//				System.out.println("pj="+pj);
+//				System.out.println("sum="+sum);
+//				System.out.println("s="+s);
+				isOk &= sum % 2 == pj;
+			}
+			if(isOk)
+				count++;
+		}
+		System.out.println(count);
+
 	}
 }
 
